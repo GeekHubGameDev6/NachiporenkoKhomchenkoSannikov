@@ -1,0 +1,101 @@
+# Blender3D MTL File: 
+# Material Count: 9
+newmtl Material.002_007senco_007senconneryteth.png
+Ns 92.156863
+Ka 0.000000 0.000000 0.000000
+Kd 0.030118 0.030118 0.030118
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd 007senconneryteth.png
+
+
+newmtl Material.005_007sclan_007sclangue.png
+Ns 92.156863
+Ka 0.000000 0.000000 0.000000
+Kd 0.030118 0.030118 0.030118
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd 007sclangue.png
+
+
+newmtl Material.004_007seanc_007seanconnery_eyes.p
+Ns 92.156863
+Ka 0.000000 0.000000 0.000000
+Kd 0.030118 0.030118 0.030118
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd 007seanconnery eyes.png
+
+
+newmtl Material.007_007seanc_007seanconneryhair2.p
+Ns 92.156863
+Ka 0.000000 0.000000 0.000000
+Kd 0.030118 0.030118 0.030118
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd 007seanconneryhair2.png
+
+
+newmtl Material_007seanconne_007seanconneryface.pn
+Ns 92.156863
+Ka 0.000000 0.000000 0.000000
+Kd 0.022588 0.022588 0.022588
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd 007seanconneryface.png
+
+
+newmtl Material.001_007sean__007sean_winter_hands.
+Ns 92.156863
+Ka 0.000000 0.000000 0.000000
+Kd 0.030118 0.030118 0.030118
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd 007sean_winter_hands.png
+
+
+newmtl Material.008_007sean__007seanconneryhair.pn
+Ns 92.156863
+Ka 0.000000 0.000000 0.000000
+Kd 0.030118 0.030118 0.030118
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd 007seanconneryhair.png
+
+
+newmtl Material.003_007sean-_007sean-winter_backpa
+Ns 92.156863
+Ka 0.000000 0.000000 0.000000
+Kd 0.165647 0.165647 0.165647
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd 007sean-winter_backpack.png
+
+
+newmtl Material.006_007sean__007sean_winter_outfil
+Ns 92.156863
+Ka 0.000000 0.000000 0.000000
+Kd 0.208314 0.208314 0.208314
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd 007sean_winter_outfil.png
+
+
