@@ -26,7 +26,10 @@ public class PlayerControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Moving)
+        {
         _charterMove.Move(_forwardmove * Speed);
+        }
         if (LeftMoving)
         {
             _charterMove.Move(Vector3.left * TurnSpeed);

@@ -7,10 +7,10 @@ public class newFloorCreate : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-	    for (int i = 1; i < 20; i++)
+	    for (int i = 1; i < 134; i++)
 	    {
-	        Instantiate(PrefabFloor, new Vector3(0, transform.position.y - 3.4695f * i, transform.position.z + 19.69f*i),
-	            transform.rotation);
+	        Instantiate(PrefabFloor, new Vector3(transform.position.x, transform.position.y - 0.89f * i,
+                transform.position.z + 5.052f*i), transform.rotation);
 	    }
 	}
 	
