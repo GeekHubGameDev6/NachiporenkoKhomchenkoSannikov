@@ -5,6 +5,7 @@ using UnityEngine;
 public class AllLets : MonoBehaviour
 {
     public GameObject[] LetsPrefab;
+    public GameObject Like;
 
     public int LetsLenght;
     public int MinDistBetweenLetbyZ;
@@ -34,6 +35,7 @@ public class AllLets : MonoBehaviour
     public void CreateLets()
     {
         Vector3 position = Vector3.zero;
+        Vector3 coinpos = Vector3.zero;;
         RaycastHit hit;
         for (int i = 0; i < LetsLenght; i++)
         {
@@ -44,6 +46,12 @@ public class AllLets : MonoBehaviour
             if(Physics.Raycast(position,Vector3.down,out hit))
                 position = new Vector3(position.x,hit.point.y,position.z);
             Instantiate(let, position + let.transform.position, let.transform.rotation, transform);
+            randomXpos = Random.Range(-GenerateLinebyX, GenerateLinebyX);
+            randomZpos = MinDistBetweenLetbyZ + Random.Range(0, MaxDistBetweenLetbyZ);
+            position = new Vector3(randomXpos, position.y, position.z + randomZpos);
+            if (Physics.Raycast(position, Vector3.down, out hit))
+                position = new Vector3(position.x, hit.point.y, position.z);
+            Instantiate(Like, position + Like.transform.position, Like.transform.rotation, transform);
         }
     }
         
