@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AllLets : MonoBehaviour
+public class AllObstacles : MonoBehaviour
 {
     public GameObject[] LetsPrefab;
     public GameObject Like;
+    public GameObject AllCoins;
 
-    public int LetsLenght;
-    public int MinDistBetweenLetbyZ;
-    public int MaxDistBetweenLetbyZ;
+    public int ObstaclesLenght;
+    public int MinDistBetweenObstaclebyZ;
+    public int MaxDistBetweenObstaclebyZ;
     public int GenerateLinebyX;
+
 	// Use this for initialization
 	void Start () {
 		CreateLets();
@@ -35,23 +37,22 @@ public class AllLets : MonoBehaviour
     public void CreateLets()
     {
         Vector3 position = Vector3.zero;
-        Vector3 coinpos = Vector3.zero;;
         RaycastHit hit;
-        for (int i = 0; i < LetsLenght; i++)
+        for (int i = 0; i < ObstaclesLenght; i++)
         {
             int randomXpos = Random.Range(-GenerateLinebyX, GenerateLinebyX);
-            int randomZpos = MinDistBetweenLetbyZ + Random.Range(0, MaxDistBetweenLetbyZ);
+            int randomZpos = MinDistBetweenObstaclebyZ + Random.Range(0, MaxDistBetweenObstaclebyZ);
             GameObject let = RandomLet;
             position = new Vector3(randomXpos,position.y,position.z + randomZpos);
             if(Physics.Raycast(position,Vector3.down,out hit))
                 position = new Vector3(position.x,hit.point.y,position.z);
             Instantiate(let, position + let.transform.position, let.transform.rotation, transform);
             randomXpos = Random.Range(-GenerateLinebyX, GenerateLinebyX);
-            randomZpos = MinDistBetweenLetbyZ + Random.Range(0, MaxDistBetweenLetbyZ);
+            randomZpos = MinDistBetweenObstaclebyZ + Random.Range(0, MaxDistBetweenObstaclebyZ);
             position = new Vector3(randomXpos, position.y, position.z + randomZpos);
             if (Physics.Raycast(position, Vector3.down, out hit))
                 position = new Vector3(position.x, hit.point.y, position.z);
-            Instantiate(Like, position + Like.transform.position, Like.transform.rotation, transform);
+            Instantiate(Like, position + Like.transform.position, Like.transform.rotation, AllCoins.transform);
         }
     }
         

@@ -30,6 +30,6 @@ public class LikeRotation : MonoBehaviour
         int.TryParse(Score.text,out _curScore);
         _curScore++;
         Score.text ="" + _curScore;
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
