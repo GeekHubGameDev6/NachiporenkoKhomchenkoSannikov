@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Finish : MonoBehaviour
 {
     public bool _braikingMove;
+
     private PlayerControler _player;
 
+    public GameObject WinMessage;
+    public Text Score;
+    public Text WinScore;
 
     // Use this for initialization
     void Start () {
@@ -35,6 +40,8 @@ public class Finish : MonoBehaviour
             {
                 _braikingMove = false;
                 _player.Speed = 0;
+                WinScore.text = Score.text;
+                WinMessage.transform.GetChild(0).gameObject.SetActive(true);
             }
         }
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class RetryEasy : MonoBehaviour
@@ -43,5 +44,10 @@ public class RetryEasy : MonoBehaviour
         Debug.Log("Pos Reset");
         LoseMessage.SetActive(false);
         _playerSpeed.Speed = _playerStartSpeed;
+    }
+
+    public void ResetGameHard()
+    {
+        SceneManager.LoadScene(0);
     }
 }
