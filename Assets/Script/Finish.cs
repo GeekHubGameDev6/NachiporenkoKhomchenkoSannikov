@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,8 +11,12 @@ public class Finish : MonoBehaviour
     private PlayerControler _player;
 
     public GameObject WinMessage;
+    public GameObject HightScoreParent;
+
     public Text Score;
     public Text WinScore;
+    public Text LastPosInHightScore;
+
 
     // Use this for initialization
     void Start () {
@@ -42,6 +47,10 @@ public class Finish : MonoBehaviour
                 _player.Speed = 0;
                 WinScore.text = Score.text;
                 WinMessage.transform.GetChild(0).gameObject.SetActive(true);
+                if (Convert.ToInt32(Score.text) > Convert.ToInt32(LastPosInHightScore.text))
+                {
+                    HightScoreParent.transform.GetChild(0).gameObject.SetActive(true);
+                }
             }
         }
 

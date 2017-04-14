@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class RetryEasy : MonoBehaviour
 {
     private GameObject _player;
-    public GameObject LoseMessage;
+    public GameObject OnOffPanel;
     public GameObject CointsHolder;
 
     public Text Score;
@@ -18,19 +18,20 @@ public class RetryEasy : MonoBehaviour
 
     private PlayerControler _playerSpeed;
 
-	// Use this for initialization
-	void Start ()
-	{
+    // Use this for initialization
+    void Start()
+    {
         _player = GameObject.FindGameObjectWithTag("Player");
-	    _playerStartPos = _player.transform.position;
-	    _playerSpeed = _player.GetComponent<PlayerControler>();
-	    _playerStartSpeed = _playerSpeed.Speed;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        _playerStartPos = _player.transform.position;
+        _playerSpeed = _player.GetComponent<PlayerControler>();
+        _playerStartSpeed = _playerSpeed.Speed;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     public void ResetGameEasy()
     {
@@ -39,10 +40,9 @@ public class RetryEasy : MonoBehaviour
         {
             CointsHolder.transform.GetChild(i).gameObject.SetActive(true);
         }
-        Score.text ="0";
+        Score.text = "0";
         _player.transform.position = _playerStartPos;
-        Debug.Log("Pos Reset");
-        LoseMessage.SetActive(false);
+        OnOffPanel.SetActive(false);
         _playerSpeed.Speed = _playerStartSpeed;
     }
 
