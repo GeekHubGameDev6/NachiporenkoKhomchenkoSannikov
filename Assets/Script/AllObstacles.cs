@@ -39,7 +39,7 @@ public class AllObstacles : MonoBehaviour
         Vector3 position = Vector3.zero;
         RaycastHit hit;
 
-        while (position.z < FloorContainer.LastPos.z - 20 )
+        while (position.z < (FloorContainer.LastPos.z - 30f) )
         {
             var randomXpos = Random.Range(-GenerateLinebyX, GenerateLinebyX);
             var randomZpos = MinDistBetweenObstaclebyZ + Random.Range(0, MaxDistBetweenObstaclebyZ);
