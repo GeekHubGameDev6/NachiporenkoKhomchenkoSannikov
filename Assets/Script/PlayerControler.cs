@@ -37,6 +37,7 @@ public class PlayerControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		CheckControlKeys ();
         _angle = Quaternion.Angle(transform.rotation, _playerRotate.rotation);
         if (Moving)
         {
@@ -99,5 +100,17 @@ public class PlayerControler : MonoBehaviour
         get { return Speed; }
         set { Speed = value; }
     }
+
+	private void CheckControlKeys() {
+		if (Input.GetKeyDown (KeyCode.LeftArrow))
+			MoveLeft ();
+		if (Input.GetKeyUp (KeyCode.LeftArrow))
+			MoveLeft ();
+		if (Input.GetKeyDown (KeyCode.RightArrow))
+			MoveRight ();
+		if (Input.GetKeyUp (KeyCode.RightArrow))
+			MoveRight ();
+	}
+
 
 }

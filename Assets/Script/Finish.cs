@@ -33,6 +33,7 @@ public class Finish : MonoBehaviour
     public void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "Player")
         {
+			GetComponent<AudioSource> ().Play ();
             other.GetComponent<AudioSource>().Play();
             _braikingMove = true;
         }
