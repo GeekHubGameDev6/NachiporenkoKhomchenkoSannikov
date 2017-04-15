@@ -22,6 +22,7 @@ public class ObstacleTouch : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+        GetComponent<AudioSource>().Play();
         _player.Speed = 0;
         _attaceScript.SetActive= true;
 
