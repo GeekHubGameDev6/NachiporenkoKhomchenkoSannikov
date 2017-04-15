@@ -41,7 +41,6 @@ public class PlayerControler : MonoBehaviour
     void Update()
     {
         _angle = Quaternion.Angle(transform.rotation, _playerRotate.rotation);
-        Debug.Log(_angle);
         if (Moving)
         {
             _charterMove.Move(_forwardmove * Speed);
@@ -63,7 +62,7 @@ public class PlayerControler : MonoBehaviour
                 if (_angle < _startAngle + 2)
                 {
                     _playerRotate.localEulerAngles = _startRotation;
-                    _leftReturnTomid = false;
+                    _rightReturnTomid = false;
                 }
             }
 
@@ -80,7 +79,7 @@ public class PlayerControler : MonoBehaviour
         if (RightMoving)
         {
             _charterMove.Move(Vector3.right * TurnSpeed );
-            _leftReturnTomid = true;
+            _rightReturnTomid = true;
             if (_angle < MaxAngle)
                 _playerRotate.Rotate(Vector3.forward, RotateSpeed);
 
