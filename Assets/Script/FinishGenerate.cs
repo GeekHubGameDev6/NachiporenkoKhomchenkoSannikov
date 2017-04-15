@@ -22,7 +22,8 @@ public class FinishGenerate : MonoBehaviour
     IEnumerator GenerateFinish()
     {
         yield return new WaitForEndOfFrame();
-        var pos = _posLastFloor.LastPos  + new Vector3(0, 0, PrefabFinish.GetComponent<BoxCollider>().size.z * PrefabFinish.transform.localScale.z/2 - 2f);
+        var pos = _posLastFloor.LastPos  + new Vector3(0, 0, PrefabFinish.GetComponent<BoxCollider>().size.z
+            * PrefabFinish.transform.localScale.z/2 - 2f);
         PrefabFinish.transform.position = pos;
     }
 }

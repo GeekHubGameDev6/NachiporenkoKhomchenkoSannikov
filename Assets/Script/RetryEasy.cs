@@ -49,7 +49,7 @@ public class RetryEasy : MonoBehaviour
 
     public void ResetGameHard()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void MainScene()

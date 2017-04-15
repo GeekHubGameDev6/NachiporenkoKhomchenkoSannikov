@@ -7,14 +7,14 @@ public class AllObstacles : MonoBehaviour
     public GameObject[] LetsPrefab;
     public GameObject Like;
     public GameObject CoinCountainer,ObstaclesCounteiner;
+    public GeneratingByPrefab FloorContainer;
 
-    public int ObstaclesLenght;
     public int MinDistBetweenObstaclebyZ;
     public int MaxDistBetweenObstaclebyZ;
     public int GenerateLinebyX;
-
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 		StartCoroutine(WaitAsecond());
 	}
 	
@@ -38,10 +38,11 @@ public class AllObstacles : MonoBehaviour
     {
         Vector3 position = Vector3.zero;
         RaycastHit hit;
-        for (int i = 0; i < ObstaclesLenght; i++)
+
+        while (position.z < FloorContainer.LastPos.z - 20 )
         {
-            int randomXpos = Random.Range(-GenerateLinebyX, GenerateLinebyX);
-            int randomZpos = MinDistBetweenObstaclebyZ + Random.Range(0, MaxDistBetweenObstaclebyZ);
+            var randomXpos = Random.Range(-GenerateLinebyX, GenerateLinebyX);
+            var randomZpos = MinDistBetweenObstaclebyZ + Random.Range(0, MaxDistBetweenObstaclebyZ);
             GameObject let = RandomLet;
             position = new Vector3(randomXpos,position.y,position.z + randomZpos);
             if(Physics.Raycast(position,Vector3.down,out hit,500f))
@@ -52,7 +53,10 @@ public class AllObstacles : MonoBehaviour
             position = new Vector3(randomXpos, position.y, position.z + randomZpos);
             if (Physics.Raycast(position, Vector3.down, out hit))
                 position = new Vector3(position.x, hit.point.y, position.z);
-            Instantiate(Like, position + Like.transform.position, Like.transform.rotation, CoinCountainer.transform);
+            var regretcoin = Random.Range(1, 2);
+            if (regretcoin == 1)
+                Instantiate(Like, position + Like.transform.position, 
+                    Like.transform.rotation, CoinCountainer.transform);
         }
     }
 

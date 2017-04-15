@@ -15,7 +15,7 @@ public class PlayerControler : MonoBehaviour
 
     private CharacterController _charterMove;
 
-    private Vector3 _forwardmove, _playerLeftMaxR, _playerRightMaxR, _startRotation;
+    private Vector3 _forwardmove,  _startRotation;
 
     private Transform _playerRotate;
 
@@ -28,9 +28,7 @@ public class PlayerControler : MonoBehaviour
         _charterMove = GetComponent<CharacterController>();
         _forwardmove = new Vector3(0, -1f, 1);
         _playerRotate = transform.GetChild(0);
-        //_playerLeftMaxR = new Vector3(0f, 0.0f, -45f);
-        //_playerRightMaxR = new Vector3(0f, 0.0f, 45f);
-        //_startRotation = _playerRotate.localEulerAngles;
+        _startRotation = _playerRotate.localEulerAngles;
         _startAngle = Quaternion.Angle(transform.rotation, _playerRotate.rotation);
         _rightReturnTomid = false;
         _leftReturnTomid = false;
