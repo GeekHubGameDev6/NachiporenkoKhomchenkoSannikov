@@ -19,8 +19,9 @@ public class StatisticsController : MonoBehaviour {
 	private void SetScoreForCup(string cupName, Text cupText)
 	{
 		if (PlayerPrefs.HasKey(cupName)) {
-			cupText.text = "";
 			var playerlist = JsonUtility.FromJson<BrontheLeaderboard>(PlayerPrefs.GetString(cupName));
+			if (playerlist.PlayerNames.Count > 0)
+				cupText.text = "";
 			for (int i = 0; i < playerlist.PlayerNames.Count; i++) {
 				var name = playerlist.PlayerNames[i]; // Name
 				var score = "" + PlayerPrefs.GetInt(name); // Score
