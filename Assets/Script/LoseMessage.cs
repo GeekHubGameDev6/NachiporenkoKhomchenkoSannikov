@@ -1,11 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LoseMessage : MonoBehaviour
 {
     public GameObject LoseMassageObj;
+    public GameObject HightScoreParent;
 
     public bool SetActive;
 
@@ -28,5 +31,19 @@ public class LoseMessage : MonoBehaviour
                 SetActive = false;
             }
         }
+
+    public void CheckHightScoreInEndless()
+    {
+        if (SceneManager.GetActiveScene().name == "EndlessSliding")
+        {
+            ActivedChild();
+            if (Convert.ToInt32(GameObject.FindGameObjectWithTag("LastHightScore").GetComponent<Text>().text) <
+                Convert.ToInt32(ScoreInMessage.text))
+            {
+                HightScoreParent.SetActive(true);
+
+            }
+        }
+    }
     }
 

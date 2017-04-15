@@ -27,12 +27,15 @@ public class LikeRotation : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        GetComponent<AudioSource>().Play();
-        int.TryParse(_score.text,out _curScore);
-        _curScore++;
-        _score.text ="" + _curScore;
-        //GetComponent<Renderer>().enabled = false;
-        if (!GetComponent<AudioSource>().isPlaying)
-            gameObject.SetActive(false);
+        if (other.tag == "Player")
+        {
+            GetComponent<AudioSource>().Play();
+            int.TryParse(_score.text, out _curScore);
+            _curScore++;
+            _score.text = "" + _curScore;
+            //GetComponent<Renderer>().enabled = false;
+            if (!GetComponent<AudioSource>().isPlaying)
+                gameObject.SetActive(false);
+        }
     }
 }

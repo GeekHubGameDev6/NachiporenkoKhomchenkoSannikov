@@ -12,10 +12,13 @@ public class AllObstacles : MonoBehaviour
     public int MinDistBetweenObstaclebyZ;
     public int MaxDistBetweenObstaclebyZ;
     public int GenerateLinebyX;
+
+    private Vector3 _position;
 	// Use this for initialization
 	void Start ()
 	{
-		StartCoroutine(WaitAsecond());
+	    _position = Vector3.zero;
+        StartCoroutine(WaitAsecond());
 	}
 	
 	// Update is called once per frame
@@ -36,26 +39,24 @@ public class AllObstacles : MonoBehaviour
 
     public void CreateObstacles()
     {
-        Vector3 position = Vector3.zero;
         RaycastHit hit;
-
-        while (position.z < (FloorContainer.LastPos.z - 30f) )
+        while (_position.z < FloorContainer.LastPos.z - 30f )
         {
             var randomXpos = Random.Range(-GenerateLinebyX, GenerateLinebyX);
             var randomZpos = MinDistBetweenObstaclebyZ + Random.Range(0, MaxDistBetweenObstaclebyZ);
             GameObject let = RandomLet;
-            position = new Vector3(randomXpos,position.y,position.z + randomZpos);
-            if(Physics.Raycast(position,Vector3.down,out hit,500f))
-                position = new Vector3(position.x,hit.point.y,position.z);
-            Instantiate(let, position + let.transform.position, let.transform.rotation, ObstaclesCounteiner.transform);
+            _position = new Vector3(randomXpos,_position.y,_position.z + randomZpos);
+            if(Physics.Raycast(_position,Vector3.down,out hit,500f))
+                _position = new Vector3(_position.x,hit.point.y,_position.z);
+            Instantiate(let, _position + let.transform.position, let.transform.rotation, ObstaclesCounteiner.transform);
             randomXpos = Random.Range(-GenerateLinebyX, GenerateLinebyX);
             randomZpos = MinDistBetweenObstaclebyZ + Random.Range(0, MaxDistBetweenObstaclebyZ);
-            position = new Vector3(randomXpos, position.y, position.z + randomZpos);
-            if (Physics.Raycast(position, Vector3.down, out hit))
-                position = new Vector3(position.x, hit.point.y, position.z);
+            _position = new Vector3(randomXpos, _position.y, _position.z + randomZpos);
+            if (Physics.Raycast(_position, Vector3.down, out hit))
+                _position = new Vector3(_position.x, hit.point.y, _position.z);
             var regretcoin = Random.Range(1, 2);
             if (regretcoin == 1)
-                Instantiate(Like, position + Like.transform.position, 
+                Instantiate(Like, _position + Like.transform.position, 
                     Like.transform.rotation, CoinCountainer.transform);
         }
     }

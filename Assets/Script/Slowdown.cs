@@ -20,7 +20,10 @@ public class Slowdown : MonoBehaviour {
 
     public void OnTriggerEnter(Collider other)
     {
-        GetComponent<AudioSource>().Play();
-        _player.PlayerSpeed -= 0.05f;
+        if (other.tag == "Player")
+        {
+            GetComponent<AudioSource>().Play();
+            _player.PlayerSpeed -= 0.05f;
+        }
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Finish : MonoBehaviour
 {
-    public bool _braikingMove;
+    public bool BraikingMove;
 
     private PlayerControler _player;
 
@@ -22,7 +22,7 @@ public class Finish : MonoBehaviour
     void Start () {
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControler>();
         _score = GameObject.FindGameObjectWithTag("Score").GetComponent<Text>();
-        _braikingMove = false;
+        BraikingMove = false;
     }
 	
 	// Update is called once per frame
@@ -33,20 +33,19 @@ public class Finish : MonoBehaviour
     public void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "Player")
         {
-			GetComponent<AudioSource> ().Play ();
-            other.GetComponent<AudioSource>().Play();
-            _braikingMove = true;
+            GetComponent<AudioSource>().Play();
+            BraikingMove = true;
         }
     }
 
     private void StopPlayerMove()
     {
-        if (_braikingMove)
+        if (BraikingMove)
         {
             _player.Speed = Mathf.Lerp(_player.Speed, 0, 5*Time.deltaTime);
             if (_player.Speed < 0.01f)
             {
-                _braikingMove = false;
+                BraikingMove = false;
                 _player.Speed = 0;
                 WinScore.text = _score.text;
                 WinMessage.transform.GetChild(0).gameObject.SetActive(true);
