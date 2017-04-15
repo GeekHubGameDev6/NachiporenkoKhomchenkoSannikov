@@ -1,12 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerControler : MonoBehaviour
 {
     public bool MoveToCenterComplite;
-    public bool LeftMoving, RightMoving, Moving, PKMove;
+    public bool LeftMoving, RightMoving, Moving;
     private bool _leftReturnTomid, _rightReturnTomid;
 
     public float TurnSpeed, Speed, RotateSpeed;
@@ -38,8 +37,7 @@ public class PlayerControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PKMove)
-            PkMovecontroll();
+		CheckControlKeys ();
         _angle = Quaternion.Angle(transform.rotation, _playerRotate.rotation);
         if (Moving)
         {
@@ -50,7 +48,7 @@ public class PlayerControler : MonoBehaviour
             if (LeftMoving == false && RightMoving == false && _leftReturnTomid)
             {
                 _playerRotate.Rotate(Vector3.forward, RotateSpeed);
-                if (_angle < _startAngle + 4)
+                if (_angle < _startAngle + 2)
                 {
                     _playerRotate.localEulerAngles = _startRotation;
                     _leftReturnTomid = false;
@@ -59,7 +57,7 @@ public class PlayerControler : MonoBehaviour
             if (LeftMoving == false && RightMoving == false && _rightReturnTomid)
             {
                 _playerRotate.Rotate(Vector3.back, RotateSpeed);
-                if (_angle < _startAngle + 4)
+                if (_angle < _startAngle + 2)
                 {
                     _playerRotate.localEulerAngles = _startRotation;
                     _rightReturnTomid = false;
@@ -97,22 +95,22 @@ public class PlayerControler : MonoBehaviour
         RightMoving = !RightMoving;
     }
 
-    public void PkMovecontroll()
-    {
-        if (Input.GetButton("Horizontal") && Input.GetAxis("Horizontal") < 0)
-            LeftMoving = true;
-        if (Input.GetButton("Horizontal") && Input.GetAxis("Horizontal") > 0)
-            RightMoving = true;
-        if (Input.GetButtonUp("Horizontal"))
-        {
-            LeftMoving = false;
-            RightMoving = false;
-        }
-    }
     public float PlayerSpeed
     {
         get { return Speed; }
         set { Speed = value; }
     }
+
+	private void CheckControlKeys() {
+		if (Input.GetKeyDown (KeyCode.LeftArrow))
+			MoveLeft ();
+		if (Input.GetKeyUp (KeyCode.LeftArrow))
+			MoveLeft ();
+		if (Input.GetKeyDown (KeyCode.RightArrow))
+			MoveRight ();
+		if (Input.GetKeyUp (KeyCode.RightArrow))
+			MoveRight ();
+	}
+
 
 }

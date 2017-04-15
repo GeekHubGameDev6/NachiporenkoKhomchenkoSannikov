@@ -98,11 +98,4 @@ public class BrontheCupLeadrboard : MonoBehaviour
         DownloadLeaderboard();
 
     }
-
-    public class BrontheLeaderboard
-    {
-        [SerializeField]
-        public List<string> PlayerNames;
-
-    }
 }
