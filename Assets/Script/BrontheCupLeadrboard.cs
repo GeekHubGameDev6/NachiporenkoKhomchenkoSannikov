@@ -11,8 +11,8 @@ public class BrontheCupLeadrboard : MonoBehaviour
     public Transform PlayerNameHolder;
     private Text _curentScore;
 
-    private string _playerName;
-    private string CurPlayer;
+    public string CupName;
+    private string _curPlayer;
     private string _json;
 
     private BrontheLeaderboard _playerlist;
@@ -32,14 +32,13 @@ public class BrontheCupLeadrboard : MonoBehaviour
 
     public void DownloadLeaderboard()
     {
-        if (!PlayerPrefs.HasKey("BrontheLeaderboard"))
+        if (!PlayerPrefs.HasKey(CupName))
         {
             _playerlist = new BrontheLeaderboard { PlayerNames = new List<string>() };
             var a = JsonUtility.ToJson(_playerlist);
-            PlayerPrefs.SetString("BrontheLeaderboard", a);
-            Debug.Log("New Leaderboard Created");
+            PlayerPrefs.SetString(CupName, a);
         }
-        _playerlist = JsonUtility.FromJson<BrontheLeaderboard>(PlayerPrefs.GetString("BrontheLeaderboard"));
+        _playerlist = JsonUtility.FromJson<BrontheLeaderboard>(PlayerPrefs.GetString(CupName));
         for (int i = 0; i < _playerlist.PlayerNames.Count; i++)
         {
             PlayerNameHolder.GetChild(i).GetComponent<Text>().text =
@@ -54,28 +53,25 @@ public class BrontheCupLeadrboard : MonoBehaviour
     {
         get
         {
-            if (string.IsNullOrEmpty(CurPlayer))
+            if (string.IsNullOrEmpty(_curPlayer))
             {
-                CurPlayer = "";
+                _curPlayer = "";
             }
-            return CurPlayer;
+            return _curPlayer;
         }
-        set { CurPlayer = value; }
+        set { _curPlayer = value; }
     }
 
     public void NewHightScore()
     {
-        _playerlist = JsonUtility.FromJson<BrontheLeaderboard>(PlayerPrefs.GetString("BrontheLeaderboard"));
+        _playerlist = JsonUtility.FromJson<BrontheLeaderboard>(PlayerPrefs.GetString(CupName));
         var playerCount = _playerlist.PlayerNames.Count;
-        Debug.Log("CurentCount " + playerCount);
         string newScore = _curentScore.text;
         bool moved = false;
         int playerPos = playerCount;
 
         for (int i = playerCount; i > 0; i--)
         {
-            Debug.Log(Convert.ToInt32(_curentScore.text) + "  >?  " 
-                + Convert.ToInt32(ScoreHolder.GetChild(i - 1).GetComponent<Text>().text) + " i = " + i);
             if (Convert.ToInt32(_curentScore.text) >
                 Convert.ToInt32(ScoreHolder.GetChild(i - 1).GetComponent<Text>().text))
             {
@@ -86,12 +82,10 @@ public class BrontheCupLeadrboard : MonoBehaviour
         if (moved == false)
         {
             _playerlist.PlayerNames.Add(CurentPlayerName);
-            Debug.Log("Lower Top");
         }
         if (moved)
         {
             _playerlist.PlayerNames.Insert(playerPos-1, CurentPlayerName);
-            Debug.Log("Better top");
         }
         if (_playerlist.PlayerNames.Count == 11)
         {
@@ -100,7 +94,7 @@ public class BrontheCupLeadrboard : MonoBehaviour
         }
         PlayerPrefs.SetInt(CurentPlayerName, Convert.ToInt32(newScore));
         _json = JsonUtility.ToJson(_playerlist);
-        PlayerPrefs.SetString("BrontheLeaderboard", _json);
+        PlayerPrefs.SetString(CupName, _json);
         DownloadLeaderboard();
 
     }
