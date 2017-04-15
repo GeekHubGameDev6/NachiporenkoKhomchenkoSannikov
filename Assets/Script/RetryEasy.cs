@@ -10,7 +10,7 @@ public class RetryEasy : MonoBehaviour
     public GameObject OnOffPanel;
     public GameObject CointsHolder;
 
-    public Text Score;
+    private Text _score;
 
     private Vector3 _playerStartPos;
 
@@ -25,6 +25,7 @@ public class RetryEasy : MonoBehaviour
         _playerStartPos = _player.transform.position;
         _playerSpeed = _player.GetComponent<PlayerControler>();
         _playerStartSpeed = _playerSpeed.Speed;
+        _score = GameObject.FindGameObjectWithTag("Score").GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -40,7 +41,7 @@ public class RetryEasy : MonoBehaviour
         {
             CointsHolder.transform.GetChild(i).gameObject.SetActive(true);
         }
-        Score.text = "0";
+        _score.text = "0";
         _player.transform.position = _playerStartPos;
         OnOffPanel.SetActive(false);
         _playerSpeed.Speed = _playerStartSpeed;

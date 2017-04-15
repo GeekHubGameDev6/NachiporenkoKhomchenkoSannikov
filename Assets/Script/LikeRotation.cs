@@ -10,13 +10,13 @@ public class LikeRotation : MonoBehaviour
 {
     public float RotateSpeed;
 
-    private Text Score;
+    private Text _score;
 
     private int _curScore;
 
     void Start()
     {
-        Score = GameObject.FindGameObjectWithTag("Score").GetComponent<Text>();
+        _score = GameObject.FindGameObjectWithTag("Score").GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -27,9 +27,9 @@ public class LikeRotation : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        int.TryParse(Score.text,out _curScore);
+        int.TryParse(_score.text,out _curScore);
         _curScore++;
-        Score.text ="" + _curScore;
+        _score.text ="" + _curScore;
         gameObject.SetActive(false);
     }
 }

@@ -10,16 +10,20 @@ public class LoseMessage : MonoBehaviour
     public bool SetActive;
 
     public Text ScoreInMessage;
-    public Text Score;
+    private Text _score;
+
+    void Start()
+    {
+        _score = GameObject.FindGameObjectWithTag("Score").GetComponent<Text>();
+    }
     void Update () {
 		ActivedChild();
 	}
-
     public void ActivedChild()
         {
             if (SetActive)
             {
-                ScoreInMessage.text = Score.text;
+                ScoreInMessage.text = _score.text;
                 LoseMassageObj.SetActive(true);
                 SetActive = false;
             }

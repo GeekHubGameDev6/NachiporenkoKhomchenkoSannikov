@@ -9,7 +9,7 @@ public class BrontheCupLeadrboard : MonoBehaviour
 {
     public Transform ScoreHolder;
     public Transform PlayerNameHolder;
-    public Text CurentScore;
+    private Text _curentScore;
 
     private string _playerName;
     private string CurPlayer;
@@ -21,7 +21,7 @@ public class BrontheCupLeadrboard : MonoBehaviour
     void Start()
     {
         DownloadLeaderboard();
-
+        _curentScore = GameObject.FindGameObjectWithTag("Score").GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -68,15 +68,15 @@ public class BrontheCupLeadrboard : MonoBehaviour
         _playerlist = JsonUtility.FromJson<BrontheLeaderboard>(PlayerPrefs.GetString("BrontheLeaderboard"));
         var playerCount = _playerlist.PlayerNames.Count;
         Debug.Log("CurentCount " + playerCount);
-        string newScore = CurentScore.text;
+        string newScore = _curentScore.text;
         bool moved = false;
         int playerPos = playerCount;
 
         for (int i = playerCount; i > 0; i--)
         {
-            Debug.Log(Convert.ToInt32(CurentScore.text) + "  >?  " 
+            Debug.Log(Convert.ToInt32(_curentScore.text) + "  >?  " 
                 + Convert.ToInt32(ScoreHolder.GetChild(i - 1).GetComponent<Text>().text) + " i = " + i);
-            if (Convert.ToInt32(CurentScore.text) >
+            if (Convert.ToInt32(_curentScore.text) >
                 Convert.ToInt32(ScoreHolder.GetChild(i - 1).GetComponent<Text>().text))
             {
                 playerPos = i;

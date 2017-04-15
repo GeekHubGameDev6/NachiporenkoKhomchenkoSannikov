@@ -15,7 +15,7 @@ public class AllObstacles : MonoBehaviour
 
 	// Use this for initialization
 	void Start () {
-		CreateLets();
+		StartCoroutine(WaitAsecond());
 	}
 	
 	// Update is called once per frame
@@ -34,7 +34,7 @@ public class AllObstacles : MonoBehaviour
         }
     }
 
-    public void CreateLets()
+    public void CreateObstacles()
     {
         Vector3 position = Vector3.zero;
         RaycastHit hit;
@@ -44,7 +44,7 @@ public class AllObstacles : MonoBehaviour
             int randomZpos = MinDistBetweenObstaclebyZ + Random.Range(0, MaxDistBetweenObstaclebyZ);
             GameObject let = RandomLet;
             position = new Vector3(randomXpos,position.y,position.z + randomZpos);
-            if(Physics.Raycast(position,Vector3.down,out hit))
+            if(Physics.Raycast(position,Vector3.down,out hit,500f))
                 position = new Vector3(position.x,hit.point.y,position.z);
             Instantiate(let, position + let.transform.position, let.transform.rotation, ObstaclesCounteiner.transform);
             randomXpos = Random.Range(-GenerateLinebyX, GenerateLinebyX);
@@ -55,5 +55,10 @@ public class AllObstacles : MonoBehaviour
             Instantiate(Like, position + Like.transform.position, Like.transform.rotation, CoinCountainer.transform);
         }
     }
-        
+
+    IEnumerator WaitAsecond()
+    {
+        yield return new WaitForSeconds(0.1f);
+        CreateObstacles();
+    }
 }
