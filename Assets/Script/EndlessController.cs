@@ -8,12 +8,10 @@ public class EndlessController : MonoBehaviour
     public AllObstacles AllObstacles;
 
     private Transform _player;
-    private bool _check1;
     // Use this for initialization
     void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player").transform;
-        _check1 = false;
     }
 
     // Update is called once per frame
