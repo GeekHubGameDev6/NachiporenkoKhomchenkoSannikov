@@ -34,7 +34,6 @@ public class PlayerControler : MonoBehaviour
         _startAngle = Quaternion.Angle(transform.rotation, _playerRotate.rotation);
         _rightReturnTomid = false;
         _leftReturnTomid = false;
-        Debug.Log(_playerRotate.eulerAngles);
     }
 
     // Update is called once per frame
