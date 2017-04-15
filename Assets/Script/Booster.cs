@@ -18,6 +18,7 @@ public class Booster : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+        GetComponent<AudioSource>().Play();
         _player.PlayerSpeed += 0.05f;
     }
 }

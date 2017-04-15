@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GenerateAfterFloor : MonoBehaviour {
+public class GenerateAfterFloor : MonoBehaviour
+{
+    public GeneratingByPrefab Lenght;
 
 	// Use this for initialization
 	void Start () {
