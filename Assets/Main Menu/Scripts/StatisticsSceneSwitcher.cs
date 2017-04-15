@@ -12,7 +12,7 @@ public class StatisticsSceneSwitcher : MonoBehaviour {
 		menuMusic.time = Globals.menuThemeOffset;
 	}
 
-	public void changeScene(string name)
+	public void ChangeScene(string name)
 	{
 		Globals.menuThemeOffset = menuMusic.time;
 		SceneManager.LoadScene(name);
