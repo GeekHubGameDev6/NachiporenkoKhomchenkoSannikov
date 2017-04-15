@@ -58,7 +58,7 @@ public class AllObstacles : MonoBehaviour
 
     IEnumerator WaitAsecond()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForEndOfFrame();
         CreateObstacles();
     }
 }

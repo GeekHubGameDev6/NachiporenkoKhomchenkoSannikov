@@ -13,7 +13,7 @@ public class Finish : MonoBehaviour
     public GameObject WinMessage;
     public GameObject HightScoreParent;
 
-    public Text Score;
+    private Text _score;
     public Text WinScore;
     public Text LastPosInHightScore;
 
@@ -21,6 +21,7 @@ public class Finish : MonoBehaviour
     // Use this for initialization
     void Start () {
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControler>();
+        _score = GameObject.FindGameObjectWithTag("Score").GetComponent<Text>();
         _braikingMove = false;
     }
 	
@@ -45,9 +46,9 @@ public class Finish : MonoBehaviour
             {
                 _braikingMove = false;
                 _player.Speed = 0;
-                WinScore.text = Score.text;
+                WinScore.text = _score.text;
                 WinMessage.transform.GetChild(0).gameObject.SetActive(true);
-                if (Convert.ToInt32(Score.text) > Convert.ToInt32(LastPosInHightScore.text))
+                if (Convert.ToInt32(_score.text) > Convert.ToInt32(LastPosInHightScore.text))
                 {
                     HightScoreParent.transform.GetChild(0).gameObject.SetActive(true);
                 }

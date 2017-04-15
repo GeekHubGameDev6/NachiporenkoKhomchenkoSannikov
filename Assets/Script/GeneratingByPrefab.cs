@@ -8,7 +8,7 @@ public class GeneratingByPrefab : MonoBehaviour
 
     public Vector3 DistanceBetweenObj;
     private Vector3 _curPos;
-    private Vector3 _firsObjpos;
+    private Transform _firsObjpos;
     private Vector3 _lastPos;
     
     public float CloneCount;
@@ -18,14 +18,14 @@ public class GeneratingByPrefab : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-	    _firsObjpos = transform.GetChild(0).position;
+	    _firsObjpos = transform.GetChild(0 );
+	    _curPos = _firsObjpos.position;
 	    for (int i = 0; i < CloneCount; i++)
 	    {
-	        _curPos = new Vector3(DistanceBetweenObj.x, _firsObjpos.y + DistanceBetweenObj.y * i,
-                _firsObjpos.z + DistanceBetweenObj.z * i);
+	        _curPos += _firsObjpos.forward * (_firsObjpos.GetComponent<BoxCollider>().size.z * _firsObjpos.localScale.z);  
 	        Instantiate(PrefabObj, _curPos, PrefabObj.transform.rotation, transform);
 	        if (i == CloneCount - 1)
-	            _lastPos = _curPos;
+	            _lastPos = _curPos + _firsObjpos.forward * ((_firsObjpos.GetComponent<BoxCollider>().size.z * _firsObjpos.localScale.z)/2);
 	    }
 	}
 	

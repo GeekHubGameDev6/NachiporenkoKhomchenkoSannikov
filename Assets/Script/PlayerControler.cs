@@ -96,5 +96,10 @@ public class PlayerControler : MonoBehaviour
         RightMoving = !RightMoving;
     }
 
+    public float PlayerSpeed
+    {
+        get { return Speed; }
+        set { Speed = value; }
+    }
 
 }
