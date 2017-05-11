@@ -20,13 +20,13 @@ public class pause : MonoBehaviour
 	    if (!PauseIsActipe)
 	        _curSpeed = _player.Speed;
 	}
-
+    // add to Pause button click 
     public void Pause()
     {
         PauseIsActipe = !PauseIsActipe;
         if (PauseIsActipe)
             _player.PlayerSpeed = 0;
-        if (!PauseIsActipe )
+        if (!PauseIsActipe)
             _player.Speed = _curSpeed;
     }
 }

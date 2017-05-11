@@ -148,4 +148,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrefabObj: {fileID: 1394928249155572, guid: 698bd72bbff82f749a199fc53364f5ee, type: 2}
-  CloneCount: 40
+  CloneCount: 20

@@ -14,15 +14,19 @@ public class LikeRotation : MonoBehaviour
 
     private int _curScore;
 
+    private bool _rendererSwitch;
+
     void Start()
     {
         _score = GameObject.FindGameObjectWithTag("Score").GetComponent<Text>();
+        _rendererSwitch = GetComponent<Renderer>().enabled;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.back, RotateSpeed*Time.deltaTime);
+        if (_rendererSwitch)
+            transform.Rotate(Vector3.back, RotateSpeed*Time.deltaTime);
     }
 
     public void OnTriggerEnter(Collider other)
@@ -33,9 +37,8 @@ public class LikeRotation : MonoBehaviour
             int.TryParse(_score.text, out _curScore);
             _curScore++;
             _score.text = "" + _curScore;
-            //GetComponent<Renderer>().enabled = false;
-            if (!GetComponent<AudioSource>().isPlaying)
-                gameObject.SetActive(false);
+            _rendererSwitch = false;
+            GetComponent<Renderer>().enabled = _rendererSwitch;
         }
     }
 }

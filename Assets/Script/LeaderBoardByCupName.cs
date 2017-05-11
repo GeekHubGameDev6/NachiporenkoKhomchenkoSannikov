@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BrontheCupLeadrboard : MonoBehaviour
+public class LeaderBoardByCupName : MonoBehaviour
 {
     public Transform ScoreHolder;
     public Transform PlayerNameHolder;
@@ -15,7 +15,7 @@ public class BrontheCupLeadrboard : MonoBehaviour
     private string _curPlayer;
     private string _json;
 
-    private BrontheLeaderboard _playerlist;
+    private LeaderboardNames _playerlist;
 
     // Use this for initialization
     void Start()
@@ -34,11 +34,11 @@ public class BrontheCupLeadrboard : MonoBehaviour
     {
         if (!PlayerPrefs.HasKey(CupName))
         {
-            _playerlist = new BrontheLeaderboard { PlayerNames = new List<string>() };
+            _playerlist = new LeaderboardNames { PlayerNames = new List<string>() };
             var a = JsonUtility.ToJson(_playerlist);
             PlayerPrefs.SetString(CupName, a);
         }
-        _playerlist = JsonUtility.FromJson<BrontheLeaderboard>(PlayerPrefs.GetString(CupName));
+        _playerlist = JsonUtility.FromJson<LeaderboardNames>(PlayerPrefs.GetString(CupName));
         for (int i = 0; i < _playerlist.PlayerNames.Count; i++)
         {
             PlayerNameHolder.GetChild(i).GetComponent<Text>().text =
@@ -64,7 +64,7 @@ public class BrontheCupLeadrboard : MonoBehaviour
 
     public void NewHightScore()
     {
-        _playerlist = JsonUtility.FromJson<BrontheLeaderboard>(PlayerPrefs.GetString(CupName));
+        _playerlist = JsonUtility.FromJson<LeaderboardNames>(PlayerPrefs.GetString(CupName));
         var playerCount = _playerlist.PlayerNames.Count;
         string newScore = _curentScore.text;
         bool moved = false;
@@ -99,7 +99,7 @@ public class BrontheCupLeadrboard : MonoBehaviour
 
     }
 
-    public class BrontheLeaderboard
+    public class LeaderboardNames
     {
         [SerializeField]
         public List<string> PlayerNames;

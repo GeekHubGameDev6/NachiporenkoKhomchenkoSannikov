@@ -10,7 +10,7 @@ public class StatisticsController : MonoBehaviour {
 	public Text goldenCupList;
 
 	void Start () {
-		SetScoreForCup ("BrontheLeaderboard", bronzeCupList);
+		SetScoreForCup ("LeaderboardNames", bronzeCupList);
 		SetScoreForCup ("SilverLeaderBoard", silverCupList);
 		SetScoreForCup ("GoldCup", goldenCupList);
 
@@ -19,7 +19,7 @@ public class StatisticsController : MonoBehaviour {
 	private void SetScoreForCup(string cupName, Text cupText)
 	{
 		if (PlayerPrefs.HasKey(cupName)) {
-			var playerlist = JsonUtility.FromJson<BrontheCupLeadrboard.BrontheLeaderboard>(PlayerPrefs.GetString(cupName));
+			var playerlist = JsonUtility.FromJson<LeaderBoardByCupName.LeaderboardNames>(PlayerPrefs.GetString(cupName));
 			if (playerlist.PlayerNames.Count > 0)
 				cupText.text = "";
 			for (int i = 0; i < playerlist.PlayerNames.Count; i++) {

@@ -23,9 +23,10 @@ public class EndlessController : MonoBehaviour
 
     public void NewPartGeneration()
     {
-        FloorContainer.LineOfObjectGenerator(FloorContainer.LastObj, 20);
-        LeftLensCountainer.LineOfObjectGenerator(LeftLensCountainer.LastObj, 162);
-        RightLensCountainer.LineOfObjectGenerator(RightLensCountainer.LastObj, 162);
-        AllObstacles.CreateObstacles();
+        var startGeneratePos = FloorContainer.LastPos;
+        FloorContainer.LineOfObjectGeneratorFromObjCounttimes(FloorContainer.LastObj, 20);
+        LeftLensCountainer.LineOfObjectGeneratorFromObjCounttimes(LeftLensCountainer.LastObj, 162);
+        RightLensCountainer.LineOfObjectGeneratorFromObjCounttimes(RightLensCountainer.LastObj, 162);
+        AllObstacles.GenerateObstaclceAndLikeOnFloorFromPosition(startGeneratePos);
     }
 }

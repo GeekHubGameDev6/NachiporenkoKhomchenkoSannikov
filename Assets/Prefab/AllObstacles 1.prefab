@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4600883632925762}
   m_Layer: 0
-  m_Name: Obstacles
+  m_Name: ObstaclesStorage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +35,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4413491970220432}
   m_Layer: 0
-  m_Name: AllCoins
+  m_Name: LikeStorage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,12 +109,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b23c7ea268b2fd4f8bc8652a187ea6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LetsPrefab:
-  - {fileID: 1633195450086998, guid: f8d0b445cd34a414bb1d463e30fca36a, type: 2}
-  - {fileID: 1633195450086998, guid: f8d0b445cd34a414bb1d463e30fca36a, type: 2}
-  - {fileID: 1085484429742548, guid: 025706a251c4cbd43acf8d4d2b12d238, type: 2}
-  - {fileID: 1085484429742548, guid: 025706a251c4cbd43acf8d4d2b12d238, type: 2}
+  ObstaclPrefabs:
   - {fileID: 1196739292687086, guid: f1b8dfd1de63bd248b902d391041092d, type: 2}
+  - {fileID: 1633195450086998, guid: f8d0b445cd34a414bb1d463e30fca36a, type: 2}
+  - {fileID: 1633195450086998, guid: f8d0b445cd34a414bb1d463e30fca36a, type: 2}
+  - {fileID: 1633195450086998, guid: f8d0b445cd34a414bb1d463e30fca36a, type: 2}
+  - {fileID: 1085484429742548, guid: 025706a251c4cbd43acf8d4d2b12d238, type: 2}
+  - {fileID: 1085484429742548, guid: 025706a251c4cbd43acf8d4d2b12d238, type: 2}
+  - {fileID: 1085484429742548, guid: 025706a251c4cbd43acf8d4d2b12d238, type: 2}
   - {fileID: 1897307905855660, guid: 836762ba954ebb64eb44c54ea1590038, type: 2}
   - {fileID: 1479450794342598, guid: 9b321b3075dedbd488bd36287f8abec5, type: 2}
   - {fileID: 1988107540063504, guid: 468a921cc5cdf8b47a60cab2d6c26373, type: 2}
@@ -123,10 +125,10 @@ MonoBehaviour:
   - {fileID: 1430169790178218, guid: ec72b2f3e078b6749b5a9620b9a17c0b, type: 2}
   - {fileID: 1132429014107804, guid: f4ff223b61b94b44cb434fa93a31fbdd, type: 2}
   - {fileID: 1132429014107804, guid: 8dd53f201eb15594ead4d6769f3e7d77, type: 2}
-  Like: {fileID: 1169365722507636, guid: 4a12a11b1ab3cb346b2ab8ce1e7e4c41, type: 2}
-  CoinCountainer: {fileID: 1296148790903620}
-  ObstaclesCounteiner: {fileID: 1292808414076638}
-  FloorContainer: {fileID: 0}
+  LikePrefab: {fileID: 1169365722507636, guid: 4a12a11b1ab3cb346b2ab8ce1e7e4c41, type: 2}
+  LikeStorage: {fileID: 1296148790903620}
+  ObstaclesStorage: {fileID: 1292808414076638}
+  FloorStorage: {fileID: 0}
   MinDistBetweenObstaclebyZ: 8
   MaxDistBetweenObstaclebyZ: 5
   GenerateLinebyX: 8

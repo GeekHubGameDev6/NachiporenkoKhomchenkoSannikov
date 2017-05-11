@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class RetryEasy : MonoBehaviour
+public class RetryManager : MonoBehaviour
 {
     private GameObject _player;
     public GameObject OnOffPanel;
@@ -37,10 +37,7 @@ public class RetryEasy : MonoBehaviour
     public void ResetGameEasy()
     {
 
-        for (int i = 0; i < CointsHolder.transform.childCount; i++)
-        {
-            CointsHolder.transform.GetChild(i).gameObject.SetActive(true);
-        }
+        ActivateLikesRederer();
         _score.text = "0";
         _player.transform.position = _playerStartPos;
         OnOffPanel.SetActive(false);
@@ -55,5 +52,13 @@ public class RetryEasy : MonoBehaviour
     public void MainScene()
     {
         SceneManager.LoadScene(0);
+    }
+
+    private void ActivateLikesRederer()
+    {
+        for (int i = 0; i < CointsHolder.transform.childCount; i++)
+        {
+            CointsHolder.transform.GetChild(i).gameObject.SetActive(true);
+        }
     }
 }

@@ -16,6 +16,8 @@ public class GeneratingByPrefab : MonoBehaviour
 
     void Awake()
     {
+        _firsObjpos = transform.GetChild(0);
+        _curPos = _firsObjpos.localPosition;
         LineOfObjectGenerator();
     }
     
@@ -32,7 +34,6 @@ public class GeneratingByPrefab : MonoBehaviour
 
     public void LineOfObjectGenerator()
     {
-        _firsObjpos = transform.GetChild(0);
         _curPos = _firsObjpos.localPosition;
         for (int i = 0; i < CloneCount; i++)
         {
@@ -45,24 +46,13 @@ public class GeneratingByPrefab : MonoBehaviour
         }
     }
 
-    public void LineOfObjectGenerator(Transform lastClone, int cloneCount)
+    public void LineOfObjectGeneratorFromObjCounttimes(Transform startObj, int objcloneCount)
     {
-        _firsObjpos = lastClone;
-        _curPos = _firsObjpos.localPosition;
-        for (int i = 0; i < cloneCount; i++)
-        {
-            _curPos += _firsObjpos.forward * (_firsObjpos.GetComponent<BoxCollider>().size.z * _firsObjpos.lossyScale.z);
-           _lastClone =  Instantiate(PrefabObj, _curPos, _firsObjpos.transform.rotation, transform);
-            if (i == cloneCount - 1)
-                _lastPos = _curPos + _firsObjpos.forward * ((_firsObjpos.GetComponent<BoxCollider>().size.z * _firsObjpos.lossyScale.z) / 2);
-        }
+        _firsObjpos = startObj;
+        CloneCount = objcloneCount;
+        LineOfObjectGenerator();
 
     }
-
-    //IEnumerator WaitBeforGenerate()
-    //{
-    //    yield return new WaitForSeconds(WaitBeforGebnerate);
-    //}
     public Vector3 LastPos
     {
         get { return _lastPos; }

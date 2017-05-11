@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerControler : MonoBehaviour
 {
     public bool MoveToCenterComplite;
-    public bool LeftMoving, RightMoving, Moving, PKMove;
+    public bool LeftMoving, RightMoving, Moving, PkMove;
     private bool _leftReturnTomid, _rightReturnTomid;
 
     public float TurnSpeed, Speed, RotateSpeed;
@@ -38,15 +38,12 @@ public class PlayerControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PKMove)
+        if (PkMove)
             PkMovecontroll();
         _angle = Quaternion.Angle(transform.rotation, _playerRotate.rotation);
         if (Moving)
         {
             _charterMove.Move(_forwardmove * Speed);
-            //gameObject.GetComponent<Animator>().SetBool("MoveComplite", MoveToCenterComplite);
-            //gameObject.GetComponent<Animator>().SetBool("LeftTurn", LeftMoving);
-            //gameObject.GetComponent<Animator>().SetBool("RightTurn", RightMoving);
             if (LeftMoving == false && RightMoving == false && _leftReturnTomid)
             {
                 _playerRotate.Rotate(Vector3.forward, RotateSpeed);
@@ -86,12 +83,13 @@ public class PlayerControler : MonoBehaviour
         }
 
     }
-
+    //add to leftmove event pointer down & up
     public void MoveLeft()
     {
         LeftMoving = !LeftMoving;
-
     }
+
+    //add to Rightmove event pointer down & up
     public void MoveRight()
     {
         RightMoving = !RightMoving;
