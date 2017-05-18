@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,16 +8,16 @@ public class PlayerControler : MonoBehaviour
 {
     public bool MoveToCenterComplite;
     public bool LeftMoving, RightMoving, Moving, PkMove;
-    private bool _leftReturnTomid, _rightReturnTomid;
+    private bool _returnRotation;
 
     public float TurnSpeed, Speed, RotateSpeed;
-    private float _angle,_startAngle;
+    private float _angle, _startAngle;
     public float MaxAngle;
 
 
     private CharacterController _charterMove;
 
-    private Vector3 _forwardmove,  _startRotation;
+    private Vector3 _forwardmove, _startRotation, _returnRotationDirection;
 
     private Transform _playerRotate;
 
@@ -31,57 +32,36 @@ public class PlayerControler : MonoBehaviour
         _playerRotate = transform.GetChild(0);
         _startRotation = _playerRotate.localEulerAngles;
         _startAngle = Quaternion.Angle(transform.rotation, _playerRotate.rotation);
-        _rightReturnTomid = false;
-        _leftReturnTomid = false;
+        _returnRotationDirection = Vector3.zero;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (PkMove)
-            PkMovecontroll();
-        _angle = Quaternion.Angle(transform.rotation, _playerRotate.rotation);
         if (Moving)
         {
             _charterMove.Move(_forwardmove * Speed);
-            if (LeftMoving == false && RightMoving == false && _leftReturnTomid)
+            _angle = Quaternion.Angle(transform.rotation, _playerRotate.rotation);
+            PkMoveControll();
+            if (LeftMoving)
             {
-                _playerRotate.Rotate(Vector3.forward, RotateSpeed);
-                if (_angle < _startAngle + 4)
-                {
-                    _playerRotate.localEulerAngles = _startRotation;
-                    _leftReturnTomid = false;
-                }
+                _charterMove.Move(Vector3.left * TurnSpeed);
+                FixCharterRotateByDirection(Vector3.back);
+                _returnRotationDirection = Vector3.forward;
             }
-            if (LeftMoving == false && RightMoving == false && _rightReturnTomid)
+            if (RightMoving)
             {
-                _playerRotate.Rotate(Vector3.back, RotateSpeed);
-                if (_angle < _startAngle + 4)
-                {
-                    _playerRotate.localEulerAngles = _startRotation;
-                    _rightReturnTomid = false;
-                }
+                _charterMove.Move(Vector3.right * TurnSpeed);
+                FixCharterRotateByDirection(Vector3.forward);
+                _returnRotationDirection = Vector3.back;
+
+            }
+            if (LeftMoving == false && RightMoving == false && PkMove == false)
+            {
+                ReturnToStartPositionRotation();
             }
 
-
         }
-        if (LeftMoving)
-        {
-            _charterMove.Move(Vector3.left * TurnSpeed);
-            _leftReturnTomid = true;
-            if (_angle < MaxAngle )
-                _playerRotate.Rotate(Vector3.back, RotateSpeed);
-
-        }
-        if (RightMoving)
-        {
-            _charterMove.Move(Vector3.right * TurnSpeed );
-            _rightReturnTomid = true;
-            if (_angle < MaxAngle)
-                _playerRotate.Rotate(Vector3.forward, RotateSpeed);
-
-        }
-
     }
     //add to leftmove event pointer down & up
     public void MoveLeft()
@@ -94,17 +74,52 @@ public class PlayerControler : MonoBehaviour
     {
         RightMoving = !RightMoving;
     }
-
-    public void PkMovecontroll()
+    private void FixCharterRotateByDirection(Vector3 direction)
     {
-        if (Input.GetButton("Horizontal") && Input.GetAxis("Horizontal") < 0)
-            LeftMoving = true;
-        if (Input.GetButton("Horizontal") && Input.GetAxis("Horizontal") > 0)
-            RightMoving = true;
-        if (Input.GetButtonUp("Horizontal"))
+        if (_angle < MaxAngle)
+            _playerRotate.Rotate(direction, RotateSpeed);
+    }
+
+    private void ReturnToStartPositionRotation()
+    {
+        _playerRotate.Rotate(_returnRotationDirection, RotateSpeed);
+        if (_angle < _startAngle + 4)
         {
-            LeftMoving = false;
-            RightMoving = false;
+            _playerRotate.localEulerAngles = _startRotation;
+            _returnRotationDirection = Vector3.zero;
+        }
+    }
+    
+    public void PkMoveControll()
+    {
+        var direction = Input.GetAxis("Horizontal");
+        if (PkMove)
+        {
+            if (Input.GetButton("Horizontal")) {
+                if (direction > 0)
+                {
+                    direction = 1;
+                }
+                if (direction < 0)
+                {
+                    direction = -1;
+                }
+                _charterMove.Move(new Vector3(direction,0,0) * TurnSpeed);
+                FixCharterRotateByDirection(new Vector3(0,0,direction));
+                _returnRotationDirection = new Vector3(0,0,direction * -1);
+            }
+            if (Input.GetButtonUp("Horizontal"))
+            {
+                _returnRotation = true;
+            }
+            if (Input.GetButtonDown("Horizontal"))
+            {
+                _returnRotation = false;
+            }
+            if (_returnRotation)
+            {
+                ReturnToStartPositionRotation();
+            }
         }
     }
     public float PlayerSpeed
@@ -112,5 +127,4 @@ public class PlayerControler : MonoBehaviour
         get { return Speed; }
         set { Speed = value; }
     }
-
 }

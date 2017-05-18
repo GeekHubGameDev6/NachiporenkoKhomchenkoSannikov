@@ -406,6 +406,21 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 188433254}
     m_Modifications:
+    - target: {fileID: 114242196249903936, guid: fe74bc5b72bc3bb44a84d11722c8c706,
+        type: 2}
+      propertyPath: m_Delegates.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114687667801295970, guid: fe74bc5b72bc3bb44a84d11722c8c706,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114242196249903936, guid: fe74bc5b72bc3bb44a84d11722c8c706,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224500212460389314, guid: fe74bc5b72bc3bb44a84d11722c8c706,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -515,6 +530,52 @@ Prefab:
         type: 2}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: MoveLeft
+      objectReference: {fileID: 0}
+    - target: {fileID: 114687667801295970, guid: fe74bc5b72bc3bb44a84d11722c8c706,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114687667801295970, guid: fe74bc5b72bc3bb44a84d11722c8c706,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114242196249903936, guid: fe74bc5b72bc3bb44a84d11722c8c706,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[2].eventID
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114242196249903936, guid: fe74bc5b72bc3bb44a84d11722c8c706,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1266553158}
+    - target: {fileID: 114242196249903936, guid: fe74bc5b72bc3bb44a84d11722c8c706,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ButtonPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 114242196249903936, guid: fe74bc5b72bc3bb44a84d11722c8c706,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114242196249903936, guid: fe74bc5b72bc3bb44a84d11722c8c706,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114242196249903936, guid: fe74bc5b72bc3bb44a84d11722c8c706,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114242196249903936, guid: fe74bc5b72bc3bb44a84d11722c8c706,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[2].callback.m_TypeName
+      value: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI, Version=1.0.0.0,
+        Culture=neutral, PublicKeyToken=null
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe74bc5b72bc3bb44a84d11722c8c706, type: 2}
@@ -734,6 +795,11 @@ Prefab:
         type: 2}
       propertyPath: TurnSpeed
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 114763768718826000, guid: f4e156c0c53db75459ebce37278dbc7f,
+        type: 2}
+      propertyPath: PkMove
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4e156c0c53db75459ebce37278dbc7f, type: 2}
